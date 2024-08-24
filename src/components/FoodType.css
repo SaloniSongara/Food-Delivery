@@ -1,0 +1,112 @@
+.mainContainer {
+    /* background: linear-gradient(rgba(246, 247, 249, 0.8), rgba(97, 97, 198, 0.75)); */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+}
+
+.card {
+    width: 18rem;
+    cursor: pointer;
+}
+
+.foodType {
+    height: 210px;
+    width: 286px;
+}
+
+.food-card {
+    margin: 20px;
+    max-width: 300px;
+}
+
+.food-card img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.added-button {
+    display: flex;
+    justify-content: end;
+    margin: 25px;
+}
+
+.TIbutton {
+    background-color: beige;
+    padding: 11px;
+}
+
+/* .selected {
+    background-color: blue;
+}
+
+.notselected {
+    background-color: lightseagreen;
+} */
+
+.AI-P-button {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.pricebtn {
+    background-color: crimson;
+}
+
+.login-form {
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav1-bg {
+    background-color: crimson;
+}
+
+.SMbtn, .selected {
+    background-color: crimson !important;
+}
+
+.text-white {
+    font-size: small;
+    text-decoration: none;
+}
+
+.notselected {
+    background-color: crimson !important;
+    /* padding: 10px !important; */
+    /* height: 40px !important; */
+}
+
+.card-img-top {
+    width: 100%;
+    /* Ensure the image takes up the full width of the card */
+    height: 150px;
+    /* Set a fixed height for the image */
+    object-fit: cover;
+    /* Scale the image to fill the container, cropping if necessary */
+}
+
+.btns {
+    display: flex;
+}
+
+.btnOn {
+    margin-right: 5px;
+}
+
+.btnLO {
+    margin-left: 5px;
+}
+
+.cardFP {
+    width: 100%;
+}
+
+.foodType1 {
+    height: 250px;
+}
