@@ -12,18 +12,32 @@ export default function LoginSignup() {
         setIsSignIn(!isSignIn);
     };
 
+    const validateEmail = (email) => {
+        // Regex to check if the email is valid
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validatePhone = (phone) => {
+        // Check if the phone number is exactly 10 digits
+        return phone.length === 10 && !isNaN(phone);
+    };
+
     const handleSignIn = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
 
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
 
         try {
             const response = await axios.post('http://localhost:8080/api/signin', { email, password });
             alert('Signed in successfully!');
             navigate("/home");
             console.log(response.data);
-
         } catch (error) {
             alert('Sign in failed!');
             console.error(error);
@@ -38,8 +52,15 @@ export default function LoginSignup() {
         const password = e.target.password.value;
         const confirmpassword = e.target.confirmpassword.value;
 
-        console.log("******", fullname, phone, email, password, confirmpassword);
+        if (!validatePhone(phone)) {
+            alert("Phone number must be exactly 10 digits.");
+            return;
+        }
 
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
 
         if (password !== confirmpassword) {
             alert("Passwords do not match!");
@@ -47,18 +68,16 @@ export default function LoginSignup() {
         }
 
         try {
-            const response = await axios.post('http://localhost:8085/api/signup', {
+            const response = await axios.post('http://localhost:8080/api/signup', {
                 fullname,
                 phone,
                 email,
                 password,
-                confirmpassword,
             });
             setIsSuccess(true);
             setIsSignIn(false);
             alert('Signed up successfully!');
             console.log(response.data);
-            // handle successful sign-up, e.g., redirect or store user data
         } catch (error) {
             alert('Sign up failed!');
             console.error(error);

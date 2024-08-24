@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom';
 import './OrderSuccess.css';
 import backgroundImage from "../assets/images/paymentBgC.jpg";
 
@@ -52,8 +52,8 @@ function PaymentOptions() {
         } else if (selectedOption === 4) {
             alert(`Cash on Delivery selected. Address: ${paymentDetails.address}`);
         }
-        resetForm(); // Reset form data after payment is processed
-        navigate('/order-success'); // Navigate to the OrderSuccess page
+        resetForm();
+        navigate('/order-success');
     };
 
     const sectionStyle = {

@@ -6,13 +6,13 @@ const AboutUs = () => {
         fontSize: '24px',
         textAlign: 'center',
         marginBottom: '10px',
-        fontFamily: 'Arial, sans-serif', // Use a good font family
+        fontFamily: 'Arial, sans-serif',
     };
 
     const textStyle = {
         textAlign: 'center',
         fontSize: '16px',
-        fontFamily: 'Arial, sans-serif', // Use a good font family
+        fontFamily: 'Arial, sans-serif',
     };
 
     const containerStyle = {

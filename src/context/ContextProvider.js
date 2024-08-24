@@ -1,6 +1,5 @@
 import React, { createContext, useState } from 'react';
 
-// Create a Context
 const ItemsContext = createContext();
 
 const ContextProvider = ({ children }) => {

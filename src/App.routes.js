@@ -38,12 +38,11 @@ export const getApplicationRoutes = (routes) => {
 }
 
 const AppRouter = () => {
-    const location = useLocation(); // Get the current route
+    const location = useLocation();
     const applicationRoutes = getApplicationRoutes(appRoutes);
 
     return (
         <div>
-            {/* Conditionally render the Header based on the current route */}
             {location.pathname !== '/' && <Header />}
             <Routes>{applicationRoutes}</Routes>
         </div>

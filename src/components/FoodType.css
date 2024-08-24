@@ -1,5 +1,4 @@
 .mainContainer {
-    /* background: linear-gradient(rgba(246, 247, 249, 0.8), rgba(97, 97, 198, 0.75)); */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -40,14 +39,6 @@
     padding: 11px;
 }
 
-/* .selected {
-    background-color: blue;
-}
-
-.notselected {
-    background-color: lightseagreen;
-} */
-
 .AI-P-button {
     display: flex;
     justify-content: space-evenly;
@@ -78,17 +69,12 @@
 
 .notselected {
     background-color: crimson !important;
-    /* padding: 10px !important; */
-    /* height: 40px !important; */
 }
 
 .card-img-top {
     width: 100%;
-    /* Ensure the image takes up the full width of the card */
     height: 150px;
-    /* Set a fixed height for the image */
     object-fit: cover;
-    /* Scale the image to fill the container, cropping if necessary */
 }
 
 .btns {

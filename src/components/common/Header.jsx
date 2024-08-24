@@ -33,10 +33,6 @@ function Header() {
               <Button className='btnLO' onClick={handleLogout}>Logout</Button>
             </div>
           </Navbar.Collapse>
-          {/* <image style={{ height: '50px', width: '50px', display: 'block', backgroundColor: 'yellow' }} alt="logo" src={logoImage} /> */}
-          {/* <div className="logo-container">
-            <img className="logoImage" alt="logo" src={logoImage} />
-          </div> */}
         </Container>
       </Navbar>
     </>

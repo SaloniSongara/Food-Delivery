@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ItemsContext } from '../context/ContextProvider';
 import backgroundImage from "../assets/images/bgFD.jpg";
@@ -32,7 +32,6 @@ function FoodCard({ item, isSelected, toggleSelect }) {
 function Category() {
     const { selectedItems, setSelectedItems } = useContext(ItemsContext);
     const { slug } = useParams();
-    const navigate = useNavigate();
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -46,8 +45,8 @@ function Category() {
                 } else if (slug === 'chinese') {
                     response = await axios.get('http://localhost:8081/food/chinese');
                 }
-                console.log("**********", response);
-                console.log("#########", response.data);
+                console.log(response);
+                console.log(response.data);
 
                 if (response) {
                     setItems(response.data);
@@ -71,10 +70,6 @@ function Category() {
         });
     };
 
-    // const handlePayment = () => {
-    //     navigate('/payment-options');
-    // };
-
     const sectionStyle = {
         width: "100%",
         height: "100vh",
@@ -86,11 +81,6 @@ function Category() {
     return (
         <>
             <div style={sectionStyle}>
-                {/* <div className='text-center mt-4'>
-                    <Button className='TIbutton' variant="info" onClick={handlePayment}>
-                        Order now
-                    </Button>
-                </div> */}
                 <div className='d-flex flex-wrap gap-2 justify-content-center mt-4'>
                     {items.map((item) => (
                         <FoodCard

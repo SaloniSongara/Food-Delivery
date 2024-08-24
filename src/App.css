@@ -10,36 +10,20 @@ body {
     width: 10px;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
   }
 
-  /* Handle */
   ::-webkit-scrollbar-thumb {
     background: red;
     border-radius: 10px;
   }
 
-  /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #b30000;
   }
 }
-
-/* body {
-  background-image: url('https://www.bitesbee.com/wp-content/uploads/2021/09/banner-3.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  margin: 0;
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  font-size: 1em;
-  padding: 5em 0 0 2em;
-} */
 
 .side-by-side-container {
   display: flex;
@@ -84,8 +68,6 @@ body {
   transition: all .5s ease;
   opacity: 0.9;
 }
-
-/* Add the rest of your existing CSS here */
 
 .frame-long {
   height: 615px;

@@ -4,7 +4,6 @@ import { ItemsContext } from '../context/ContextProvider';
 import { useNavigate } from 'react-router-dom';
 
 function SelectedItems() {
-    // const selectedCards = items.filter(item => selectedItems.includes(item.id));
 
     const { selectedItems, setSelectedItems } = useContext(ItemsContext);
     const navigate = useNavigate();
@@ -12,7 +11,6 @@ function SelectedItems() {
     const handlePayment = () => {
         navigate('/payment-options');
     };
-    console.log("**** ", selectedItems);
     
     return (
         <>
