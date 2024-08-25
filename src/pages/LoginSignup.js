@@ -2,34 +2,45 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/images/banner.jpg";
+import "../pages/OrderSuccess.css";
 
 export default function LoginSignup() {
     const [isSignIn, setIsSignIn] = useState(true);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     const toggleForm = () => {
         setIsSignIn(!isSignIn);
+        setErrors({});
     };
 
     const validateEmail = (email) => {
-        // Regex to check if the email is valid
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
 
     const validatePhone = (phone) => {
-        // Check if the phone number is exactly 10 digits
         return phone.length === 10 && !isNaN(phone);
     };
 
     const handleSignIn = async (e) => {
         e.preventDefault();
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+        const email = e.target.elements.email.value;
+        const password = e.target.elements.password.value;
+
+        let validationErrors = {};
 
         if (!validateEmail(email)) {
-            alert('Please enter a valid email address.');
+            validationErrors.email = 'Please enter a valid email address.';
+        }
+
+        if (!password) {
+            validationErrors.password = 'Please enter your password.';
+        }
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
             return;
         }
 
@@ -46,24 +57,31 @@ export default function LoginSignup() {
 
     const handleSignUp = async (e) => {
         e.preventDefault();
-        const fullname = e.target.fullname.value;
-        const phone = e.target.phone.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const confirmpassword = e.target.confirmpassword.value;
+        const fullname = e.target.elements.fullname.value;
+        const phone = e.target.elements.phone.value;
+        const email = e.target.elements.email.value;
+        const password = e.target.elements.password.value;
+
+        let validationErrors = {};
+
+        if (!fullname) {
+            validationErrors.fullname = 'Please enter your full name.';
+        }
 
         if (!validatePhone(phone)) {
-            alert("Phone number must be exactly 10 digits.");
-            return;
+            validationErrors.phone = 'Phone number must be exactly 10 digits.';
         }
 
         if (!validateEmail(email)) {
-            alert('Please enter a valid email address.');
-            return;
+            validationErrors.email = 'Please enter a valid email address.';
         }
 
-        if (password !== confirmpassword) {
-            alert("Passwords do not match!");
+        if (!password) {
+            validationErrors.password = 'Please enter a password.';
+        }
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
             return;
         }
 
@@ -74,9 +92,9 @@ export default function LoginSignup() {
                 email,
                 password,
             });
-            setIsSuccess(true);
-            setIsSignIn(false);
             alert('Signed up successfully!');
+            setIsSuccess(true);
+            setIsSignIn(true);
             console.log(response.data);
         } catch (error) {
             alert('Sign up failed!');
@@ -111,8 +129,10 @@ export default function LoginSignup() {
                             <form className={`form-signin ${!isSignIn ? 'form-signin-left' : ''}`} onSubmit={handleSignIn}>
                                 <label htmlFor="email">Email</label>
                                 <input className="form-styling" type="text" name="email" required />
+                                {errors.email && <p className="error">{errors.email}</p>}
                                 <label htmlFor="password">Password</label>
                                 <input className="form-styling" type="password" name="password" required />
+                                {errors.password && <p className="error">{errors.password}</p>}
                                 <div className="btn-animate">
                                     <button type="submit" className="btn-signin">Sign in</button>
                                 </div>
@@ -121,14 +141,16 @@ export default function LoginSignup() {
                             <form className={`form-signup ${isSignIn ? '' : 'form-signup-left'}`} onSubmit={handleSignUp}>
                                 <label htmlFor="fullname">Full name</label>
                                 <input className="form-styling" type="text" name="fullname" required />
+                                {errors.fullname && <p className="error">{errors.fullname}</p>}
                                 <label htmlFor="phone">Phone</label>
                                 <input className="form-styling" type="number" name="phone" required />
+                                {errors.phone && <p className="error">{errors.phone}</p>}
                                 <label htmlFor="email">Email</label>
                                 <input className="form-styling" type="email" name="email" required />
+                                {errors.email && <p className="error">{errors.email}</p>}
                                 <label htmlFor="password">Password</label>
                                 <input className="form-styling" type="password" name="password" required />
-                                <label htmlFor="confirmpassword">Confirm password</label>
-                                <input className="form-styling" type="password" name="confirmpassword" required />
+                                {errors.password && <p className="error">{errors.password}</p>}
                                 <button type="submit" className="btn-signup">Sign Up</button>
                             </form>
                         </div>

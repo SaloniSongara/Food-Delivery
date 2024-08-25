@@ -96,3 +96,7 @@
 .foodType1 {
     height: 250px;
 }
+
+.error{
+    color: red;
+}
